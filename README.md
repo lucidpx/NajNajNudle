@@ -38,8 +38,13 @@ Otvori [http://localhost:3000](http://localhost:3000). Koristi se [`serve`](http
 
 ## Deploy (npr. Cloudflare Pages)
 
-- **Build command:** prazno ili `exit 0`
-- **Output directory:** `site`
+U Cloudflare dashboardu (**Settings → Builds**):
+
+- **Framework preset:** None
+- **Build command:** `npm run cf-pages-build` (ili u Linux okruženju i `exit 0` — [preporuka iz dokumentacije](https://developers.cloudflare.com/pages/configuration/build-configuration/); prazno polje može da izazove neuspeh builda)
+- **Build output directory:** `site` (bez vodeće kose crte)
+
+Ako build i dalje padne na kloniranju, proveri **Deployments → poslednji pokušaj → Build log** (ne „Retry“ na starom crvenom redu ako je commit stariji od `main`).
 
 ---
 
