@@ -1,0 +1,13 @@
+{
+  "name": "naj-naj-nudle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Statički sajt (Concrete5 mirror) — javni koren je folder site/",
+  "scripts": {
+    "dev": "npx --yes serve site -l 3000",
+    "preview": "npx --yes serve site -l 3000",
+    "build:web": "npm run build --prefix web",
+    "dev:web": "npm run dev --prefix web"
+  },
+  "devDependencies": {}
+}
