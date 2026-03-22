@@ -46,6 +46,8 @@ U Cloudflare dashboardu (**Settings → Builds**):
 
 Ako build i dalje padne na kloniranju, proveri **Deployments → poslednji pokušaj → Build log** (ne „Retry“ na starom crvenom redu ako je commit stariji od `main`).
 
+**Cloudflare Pages:** pojedinačni fajl mora biti **≤ 25 MiB**. Veće PDF-ove drži van repozitorijuma (npr. R2, Dropbox, Google Drive) i linkuj ih u HTML-u.
+
 ---
 
 *Stack: čist statički HTML + asseti; nema build koraka za glavni sajt.*
