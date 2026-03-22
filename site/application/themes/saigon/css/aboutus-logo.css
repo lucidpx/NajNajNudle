@@ -58,14 +58,35 @@ section.home-section-1 .home-section-1-mark img {
   margin: 0;
   filter: brightness(0) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
 }
+@media (max-width: 991px) {
+  section.home-section-1 .special-text-area {
+    position: relative;
+    z-index: 3;
+  }
+  section.home-section-1 .home-section-1-mark {
+    z-index: 1;
+    opacity: 0.32;
+  }
+  section.home-section-1 .home-section-1-mark img {
+    filter: brightness(0) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  }
+}
 @media (max-width: 767px) {
   section.home-section-1 .home-section-1-mark {
     width: 148px;
     max-width: min(148px, 40vw);
     bottom: max(88px, env(safe-area-inset-bottom, 0px));
+    opacity: 0.16;
   }
   section.home-section-1 .home-section-1-mark img {
     max-height: min(230px, 46vh);
+    filter: brightness(0) drop-shadow(0 1px 6px rgba(0, 0, 0, 0.06));
+  }
+}
+@media (max-width: 575px) {
+  section.home-section-1 .home-section-1-mark {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -483,5 +504,149 @@ section.home-section-2 .text-desktop-right p {
   .home-section-instagram .instagram-profile-embed {
     height: 520px;
     border-radius: 6px;
+  }
+}
+
+/* Header — mobilni meni (≤650px): panel, veći tap, jezik ne prekriva hamburger */
+@media (max-width: 650px) {
+  #top .navigation {
+    position: relative;
+    z-index: 20;
+  }
+  #top .main-menu-btn {
+    top: max(12px, env(safe-area-inset-top, 0px));
+    right: max(4px, env(safe-area-inset-right, 0px));
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #top .main-menu-btn:active {
+    background: rgba(255, 255, 255, 0.22);
+  }
+  #main-menu-state:checked ~ .main-menu-btn {
+    background: rgba(255, 255, 255, 0.24);
+  }
+  #top .main-menu-btn .main-menu-btn-icon {
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -1px;
+  }
+  #top .main-menu-btn .main-menu-btn-icon:before,
+  #top .main-menu-btn .main-menu-btn-icon:after {
+    left: 0;
+  }
+  #top #language {
+    display: block;
+    top: max(14px, env(safe-area-inset-top, 0px));
+    right: calc(48px + max(10px, env(safe-area-inset-right, 0px)));
+    bottom: auto;
+    z-index: 21;
+  }
+  #top #language .ccm-block-switch-language-flags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.35);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  #top #language .ccm-block-switch-language-flags a,
+  #top #language .ccm-block-switch-language-flags span {
+    padding: 4px 8px !important;
+    font-size: 14px !important;
+    border-radius: 6px;
+  }
+  #top #language .ccm-block-switch-language-flags a:hover,
+  #top #language .ccm-block-switch-language-flags a:focus {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  #main-menu-state:checked ~ #main-menu {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 12px 0 0 0;
+    padding: 6px 0;
+    list-style: none;
+    background: rgba(22, 11, 8, 0.94);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+      0 18px 48px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  #top .navigation ul#main-menu li {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  #top .navigation ul#main-menu li:last-child {
+    border-bottom: 0;
+  }
+  #top .navigation ul#main-menu li a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  #top .navigation ul#main-menu li a span.icon {
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1;
+  }
+  #top .navigation ul#main-menu li a span.text {
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    width: auto;
+  }
+  #top .navigation ul#main-menu li a:hover,
+  #top .navigation ul#main-menu li a:focus {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  #top .navigation ul#main-menu li.nav-selected a {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #fff;
+    padding-left: 15px;
+    font-weight: 700;
+  }
+  #top .navigation ul#main-menu li.nav-selected a:after {
+    display: none;
+  }
+  #top .navigation ul#main-menu li a:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.85);
+    outline-offset: -4px;
+  }
+  #main-menu-state:checked ~ #main-menu ~ #language {
+    display: block;
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    right: auto;
+    top: auto;
+  }
+  #main-menu-state:checked ~ #main-menu ~ #language .ccm-block-switch-language-flags {
+    justify-content: center;
   }
 }
