@@ -7,11 +7,10 @@
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <meta name="generator" content="concrete5"/>
-<meta name="msapplication-TileImage" content="/application/files/9116/2877/2486/Windows_8_Thumbnail.png"/>
-<link rel="shortcut icon" href="/application/files/7916/2877/2486/favicon.ico" type="image/x-icon"/>
-<link rel="icon" href="/application/files/7916/2877/2486/favicon.ico" type="image/x-icon"/>
-<link rel="apple-touch-icon" href="/application/files/1916/2877/2485/iPhone_Thumbnail.png"/>
-<link rel="canonical" href="/speisekarte">
+<meta name="msapplication-TileImage" content="/branding/favicon.png"/>
+<link rel="icon" href="/branding/favicon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/branding/favicon.png"/>
+<link rel="canonical" href="/meni">
 <script type="text/javascript">
     var CCM_DISPATCHER_FILENAME = "/index.php";
     var CCM_CID = 191;
@@ -36,7 +35,7 @@
 		<link rel="stylesheet" type="text/css" href="/application/themes/saigon/css/bootstrap.min.css" media="screen" />
 		<link href="/application/files/cache/css/saigon/presets/main.css?ts=1774135622" rel='stylesheet' type='text/css'>
 		<link href="/application/files/cache/css/saigon/presets/responsive.css?ts=1774135622" rel='stylesheet' type='text/css'>
-		<link href="/application/themes/saigon/css/aboutus-logo.css?v=38" rel="stylesheet" type="text/css">
+		<link href="/application/themes/saigon/css/aboutus-logo.css?v=93" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
 		
 				
@@ -46,7 +45,7 @@
 	<div id="wrapper" class="ccm-page ccm-page-id-191 page-type-page page-template-menu">
 
 <div id="teaser" class="menu">
-	<div class="innerteaser">
+	<div class="teaser-shade" aria-hidden="true"></div>
 		<div class="container">
 			<div id="top">
     <div class="logo">
@@ -58,18 +57,11 @@
     <div class="navigation">
         <input id="main-menu-state" type="checkbox">
         <label class="main-menu-btn" for="main-menu-state">
-            <span class="main-menu-btn-icon"></span> Otvori / zatvori meni
+            <span class="main-menu-btn-icon"></span>
         </label>
         
 
-    <ul class="nav" id="main-menu"><li class="nav-first nav-home"><a href="/" target="_self" class="nav-first nav-home"><span class="icon icon-home nav-first nav-home"></span><span class="text">Početna</span></a></li><li class="icon-aboutus"><a href="/ueber-uns" target="_self" class="icon-aboutus"><span class="icon icon-aboutus"></span><span class="text">O nama</span></a></li><li class="nav-selected nav-path-selected icon-menu"><a href="/speisekarte" target="_self" class="nav-selected nav-path-selected icon-menu"><span class="icon nav-selected nav-path-selected icon-menu"></span><span class="text">Meni</span></a></li><li class="icon-orderfood"><a href="/essen-bestellen" target="_self" class="icon-orderfood"><span class="icon icon-orderfood"></span><span class="text">Poručivanje</span></a></li><li class="nav-last icon-contact"><a href="/kontakt" target="_self" class="nav-last icon-contact"><span class="icon nav-last icon-contact"></span><span class="text">Kontakt</span></a></li></ul>
-        <div id="language">
-            
-
-    <div class="ccm-block-switch-language-flags">
-            <span class="ccm-block-switch-language-active-flag" title="Srpski (latinica)"><span>SR</span></span>
-        </div>
-        </div>
+    <ul class="nav" id="main-menu"><li class="nav-first nav-home"><a href="/" target="_self" class="nav-first nav-home"><span class="icon icon-home nav-first nav-home"></span><span class="text">Početna</span></a></li><li class="icon-aboutus"><a href="/onama" target="_self" class="icon-aboutus"><span class="icon icon-aboutus"></span><span class="text">O nama</span></a></li><li class="nav-selected nav-path-selected icon-menu"><a href="/meni" target="_self" class="nav-selected nav-path-selected icon-menu"><span class="icon nav-selected nav-path-selected icon-menu"></span><span class="text">Meni</span></a></li><li class="icon-orderfood"><a href="/porucivanje" target="_self" class="icon-orderfood"><span class="icon icon-orderfood"></span><span class="text">Poručivanje</span></a></li><li class="nav-last icon-contact"><a href="/kontakt" target="_self" class="nav-last icon-contact"><span class="icon nav-last icon-contact"></span><span class="text">Kontakt</span></a></li></ul>
     </div>
     <div class="clear"></div>
     <div id="openinghours">
@@ -79,11 +71,10 @@
 </div>			<div id="teaser-content">
     
 
-    <h1>Sveže nudle i azijski ukusi.<br />Najbolje od uobičajenog.</h1><hr /><p><meta charset="UTF-8" />Naša filozofija je da spojimo sveže, zdrave specijalitete sa rezanim nudlama i azijskim jelima u najboljem kvalitetu — otvoreno i srdačno za sve goste.</p>
+    
 	
 </div>			
 		</div>
-	</div>
 	<div id="teaser-speise-menu">
 		<img src="/application/themes/saigon/img/home/speise.png" alt="Primer jela — Naj Naj nudle" class="img-responsive" />
 	</div>
@@ -1196,6 +1187,96 @@
 				</div>
 			</div>
 		</section>
+		<section class="menu-clean-section">
+			<div class="container">
+				<div class="menu-clean-header">
+					<h2>Meni</h2>
+					<p>Izaberi sos, kombinaciju i veličinu po meri.</p>
+				</div>
+
+				<div class="menu-clean-grid">
+					<article class="menu-clean-card">
+						<h3>Slani ukusi</h3>
+						<p class="menu-clean-note">Osnovne opcije za slane sosove:</p>
+						<ul class="menu-clean-pricing">
+							<li><strong>Box (sos + nudle)</strong> 340-380 gr - 280 din</li>
+							<li><strong>Box (sos + nudle + povrce)</strong> 440-480 gr - 330 din</li>
+							<li><strong>Obrok (sos + nudle + piletina + povrce)</strong> 520-560 gr - 440 din</li>
+						</ul>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Teriyaki</h3>
+						<p>Najpopularniji japanski sos. Slatko-slani ukus sa blagom aromom karamele i bogatim umami profilom.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> med, soja sos, sos od ostriga, beli luk, smedji secer, kecap, djumbir, susam, crni luk, cimet.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Sechuan</h3>
+						<p>Inspirisan Sechuan kuhinjom. Kombinuje ljuto, aromaticno, slano, kiselkasto i blago slatko.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> soja sos, djumbir, beli luk, braon secer, ljuta paprika, pirincano sirce, gustin, limun, med.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Soya sos</h3>
+						<p>Brz i ukusan wok stil, inspirisan Hong Kong rezancima.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> soja sos (svetli i tamni), susamovo ulje, sos od ostriga, mirin, crni luk, beli luk.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Garlic sos</h3>
+						<p>Kremast i aromatizan sos od belog luka, u fuziji azijskih i italijanskih ukusa.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> soja sos, susamovo ulje, sos od ostriga, braon secer, puter, beli luk.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Yakisoba</h3>
+						<p>Japanski klasik za nudle, poznat po punom i blago dimljenom street-food ukusu.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> soja sos, kecap, sos od ostriga, Worcestershire sos.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Coco curry</h3>
+						<p>Kombinacija karija i kokosovog mleka, inspirisana tajlandskom kuhinjom.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> kokosovo mleko, bujon, kari, vlasac, beli luk.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>Bolognese</h3>
+						<p>Italijanski klasik iz Bolonje, prilagodjen nudlama.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> crni luk, beli luk, mleveno meso, paradajz, origano.</p>
+					</article>
+
+					<article class="menu-clean-card">
+						<h3>4 vrste sira (4 formaggio)</h3>
+						<p>Bogat i kremast sos od vise vrsta sira.</p>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> puter, skrob, beli sir, kackavalj, parmezan, pavlaka, vlasac.</p>
+						<p class="menu-clean-price"><strong>Box (sos + nudle):</strong> 380 gr - 300 din</p>
+					</article>
+
+					<article class="menu-clean-card menu-clean-card-sweet">
+						<h3>Slatke nudle</h3>
+						<ul class="menu-clean-pricing">
+							<li><strong>Box (sos + nudle)</strong> 360 gr - 350 din</li>
+							<li><strong>Box (sos + nudle + sladoled)</strong> 410 gr - 450 din</li>
+						</ul>
+						<p><strong>Med i orasi:</strong> puter, med, orasi, cimet, suvo grozdje.</p>
+						<p><strong>Coko Mlecko:</strong> puter, secer, mleko u prahu, kakao, lesnik, vanilin secer.</p>
+						<p><strong>Mak:</strong> mleko, mak, vanilin secer, maslac, secer.</p>
+					</article>
+
+					<article class="menu-clean-card menu-clean-card-rolls">
+						<h3>Prolecne rolnice</h3>
+						<p>Hrskave rolnice inspirisane tradicionalnim "jelom srece" iz perioda Kineske Nove godine.</p>
+						<ul class="menu-clean-pricing">
+							<li><strong>Prolecne rolnice</strong> 160 gr - 250 din</li>
+							<li><strong>Prolecne rolnice sa piletinom</strong> 240 gr - 300 din</li>
+						</ul>
+						<p class="menu-clean-ing"><strong>Sastojci:</strong> kore, mix povrca, zacini.</p>
+					</article>
+				</div>
+			</div>
+		</section>
 	</div>
 </div>
 
@@ -1296,7 +1377,7 @@
     <p><strong>Navigacija</strong></p>
 
 
-    <ul class="nav" id="footer-menu"><li><a href="/ueber-uns" target="_self" class="nav-first icon-aboutus">› <span class="text">O nama</span></a></li><li><a href="/speisekarte" target="_self" class="nav-selected nav-path-selected icon-menu">› <span class="text">Meni</span></a></li><li><a href="/essen-bestellen" target="_self" class="icon-orderfood">› <span class="text">Poručivanje</span></a></li><li><a href="/kontakt" target="_self" class="nav-last icon-contact">› <span class="text">Kontakt</span></a></li></ul>
+    <ul class="nav" id="footer-menu"><li><a href="/onama" target="_self" class="nav-first icon-aboutus">› <span class="text">O nama</span></a></li><li><a href="/meni" target="_self" class="nav-selected nav-path-selected icon-menu">› <span class="text">Meni</span></a></li><li><a href="/porucivanje" target="_self" class="icon-orderfood">› <span class="text">Poručivanje</span></a></li><li><a href="/kontakt" target="_self" class="nav-last icon-contact">› <span class="text">Kontakt</span></a></li></ul>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -1338,7 +1419,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
 	<script src="/application/themes/saigon/js/location-map.js?v=2"></script>
-	<script src="/application/themes/saigon/js/main.js?v=2"></script>
+	<script src="/application/themes/saigon/js/main.js?v=3"></script>
 	<script type="text/javascript" src="/application/themes/saigon/addons/photoswipe/photoswipe.min.js?ccm_nocache=9d16ea77688b74732ba8a89813d5e9bc255faadc"></script>
 <script type="text/javascript" src="/application/themes/saigon/addons/photoswipe/photoswipe-ui-default.min.js?ccm_nocache=9d16ea77688b74732ba8a89813d5e9bc255faadc"></script>
 <script type="text/javascript" src="/application/themes/saigon/addons/photoswipe/init-sp.js?ccm_nocache=9d16ea77688b74732ba8a89813d5e9bc255faadc"></script>

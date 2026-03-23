@@ -28,6 +28,49 @@
   content: none !important;
 }
 
+/* Hero gradijent (ranije .innerteaser); prazan sloj ispod .container */
+#teaser > .teaser-shade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
+  pointer-events: none;
+  z-index: 0;
+}
+#teaser > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+ * #teaser-content (main.css): absolute + top 50% + translateY(-50%).
+ * Bez ovoga .container je visok koliko #top (sadržaj je izvan toka), pa je
+ * „sredina“ zapravo vrh heroa. Od 768px naviše teaser ima fiksnu visinu —
+ * min-height: 100% rasteže .container na visinu #teaser (centar levo u hero-u).
+ * ≤768px početna: #teaser.home > .container min-height 100%; #teaser-content top ispod logoa (ne top:50% u niskom kontejneru).
+ */
+@media (min-width: 768px) {
+  #teaser > .container {
+    min-height: 100%;
+    box-sizing: border-box;
+  }
+  #teaser.home > .container {
+    min-height: 100%;
+    box-sizing: border-box;
+  }
+  #teaser #teaser-content {
+    left: 0;
+    right: auto;
+  }
+}
+
 /* Početna — Filozofija: beli linijski PNG → potpuno crn (brightness(0)), veći, više uz desnu ivicu */
 section.home-section-1::after {
   display: none !important;
@@ -46,7 +89,7 @@ section.home-section-1 .home-section-1-mark {
   line-height: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 1;
+  opacity: 0.32;
 }
 section.home-section-1 .home-section-1-mark img {
   width: 100%;
@@ -56,7 +99,7 @@ section.home-section-1 .home-section-1-mark img {
   object-position: right center;
   display: block;
   margin: 0;
-  filter: brightness(0) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+  filter: brightness(0) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
 }
 @media (max-width: 991px) {
   section.home-section-1 .special-text-area {
@@ -65,13 +108,9 @@ section.home-section-1 .home-section-1-mark img {
   }
   section.home-section-1 .home-section-1-mark {
     z-index: 1;
-    opacity: 0.32;
-  }
-  section.home-section-1 .home-section-1-mark img {
-    filter: brightness(0) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   section.home-section-1 .home-section-1-mark {
     width: 148px;
     max-width: min(148px, 40vw);
@@ -83,13 +122,6 @@ section.home-section-1 .home-section-1-mark img {
     filter: brightness(0) drop-shadow(0 1px 6px rgba(0, 0, 0, 0.06));
   }
 }
-@media (max-width: 575px) {
-  section.home-section-1 .home-section-1-mark {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 /* Početna — sekcija Filozofija: malo veća slika */
 section.home-section-1 .special-image-area {
   overflow: visible;
@@ -100,7 +132,7 @@ section.home-section-1 .special-image-area img.bID-180 {
   transform: scale(1.08);
   transform-origin: center top;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   section.home-section-1 .special-image-area {
     max-width: 100%;
   }
@@ -296,89 +328,129 @@ section.home-section-2 .text-desktop-right p {
   box-sizing: border-box;
 }
 
-/* Početna — teaser / .innerteaser: čitljivije na telefonu */
+/* Početna — teaser: čitljivije na telefonu */
 @media (max-width: 991px) {
   #teaser.home #teaser-content {
     gap: 1rem;
   }
 }
 
-@media (max-width: 650px) {
-  #teaser.home {
-    height: auto !important;
-    min-height: 0;
-    padding-bottom: 0 !important;
-    overflow: visible;
-  }
-  #teaser.home .innerteaser {
-    min-height: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.38) 42%,
-      rgba(0, 0, 0, 0.22) 100%
-    );
-  }
-  #teaser.home .innerteaser > .container {
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-  }
-  #teaser.home #teaser-content {
-    max-width: none !important;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 0 1.15rem !important;
-    gap: 1.05rem;
-    align-items: stretch;
-  }
-  #teaser.home #teaser-content .teaser-reviews {
-    max-width: none;
-    width: 100%;
-    padding: 1.1rem 1rem 1.2rem;
-    border-radius: 14px;
-  }
-  #teaser.home #teaser-content .teaser-reviews-label {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.65rem;
-  }
-  #teaser.home #teaser-content .teaser-reviews-score {
-    font-size: 2rem;
-  }
-  #teaser.home #teaser-content .teaser-reviews-cta {
-    max-width: none;
-    width: 100%;
-  }
-  #teaser.home #teaser-content .teaser-reviews-cta .btn {
-    min-height: 48px;
-    padding: 12px 16px;
-    font-size: 16px;
-    border-radius: 10px;
-  }
-  /* Slika jela: u toku dokumenta, centrirano (umesto apsolutnog „odsecanja”) */
+/* Home teaser content must stay above bowl/chopsticks */
+#teaser.home #teaser-content {
+  z-index: 6 !important;
+}
+
+/* Dodatni osigurač: tekstualni blok iznad činije na svim home breakpoint-ima */
+#teaser.home > .container #teaser-content {
+  z-index: 12 !important;
+}
+
+/*
+ * Početna — činija (clip-path-home.png / #teaser:before):
+ * ≥768px: top = visina #teaser − visina :before (900−550→350, 800−450→350, 600−350→250) = ivica talasa.
+ * Horizontalno: levo 50% + pozitivan margin-left (činija u desnoj „đepu“, preklapa krivu).
+ * ≤768px: ista početna kao (min 768 ∧ max 991) — bez dodatnih „telefonskih“ koraka.
+ * Štapići: horizontalno samo >1200px; inače rotate −45°.
+ */
+@media (min-width: 768px) {
   #teaser.home #teaser-speise {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: min(88vw, 300px) !important;
-    max-width: 100%;
-    padding: 4px 12px 32px;
+    position: absolute !important;
+    z-index: 3;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-right: 0 !important;
+    padding: 0;
+    overflow: visible;
     box-sizing: border-box;
+    transform: none !important;
+    -webkit-transform: none !important;
+    pointer-events: none;
   }
   #teaser.home #teaser-speise img {
     width: 100%;
+    max-width: 100%;
     height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.45));
   }
   #teaser.home #teaser-speise:after {
-    display: none;
+    content: '';
+    position: absolute;
+    transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    width: 600px !important;
+    height: 71px !important;
+    margin-left: -300px !important;
+    top: 60px !important;
+    left: 50% !important;
   }
-  #teaser.home #follow-us {
-    position: relative;
-    margin-top: -12px;
+}
+
+@media (min-width: 1201px) {
+  /* top: visina #teaser − #teaser:before (900px − 550px) = ivica PNG talasa */
+  #teaser.home #teaser-speise {
+    top: 350px !important;
+    margin-left: 92px !important;
+    width: min(400px, calc(50vw - 92px - 1.5rem)) !important;
+    max-width: 400px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  /* top: 800px − 450px (:before) = ista ivica talasa kao na širem ekranu */
+  #teaser.home #teaser-speise {
+    top: 350px !important;
+    margin-left: 77px !important;
+    width: min(325px, calc(50vw - 77px - 1.5rem)) !important;
+    max-width: 325px !important;
+  }
+  /* Štapići dijagonalno preko činije (~45°), kao na užem breakpointu teme, skalirano za širinu 325px */
+  #teaser.home #teaser-speise:after {
+    width: 450px !important;
+    height: 52px !important;
+    margin-left: -210px !important;
+    top: 82px !important;
+    left: 50% !important;
+    transform-origin: 52% 48%;
+    -webkit-transform: rotate(-45deg) !important;
+    -ms-transform: rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Tekstualni teaser ostaje ispod logoa (ne vertikalno centriran). */
+  #teaser.home #teaser-content {
+    right: auto !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+  }
+  /* top: 600px − 350px (:before) — činija na liniji talasa, desno od centra */
+  #teaser.home #teaser-speise {
+    top: 250px !important;
+    margin-left: 61px !important;
+    width: min(250px, calc(50vw - 61px - 1.5rem)) !important;
+    max-width: 250px !important;
+  }
+  /* Isto kao responsive.css + isti princip kao 992–1200px (dijagonalni štapići) */
+  #teaser.home #teaser-speise:after {
+    width: 350px !important;
+    height: 41px !important;
+    margin-left: -175px !important;
+    top: 110px !important;
+    left: 50% !important;
+    transform-origin: 52% 48%;
+    -webkit-transform: rotate(-45deg) !important;
+    -ms-transform: rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
   }
 }
 
@@ -500,36 +572,99 @@ section.home-section-2 .text-desktop-right p {
     0 8px 28px rgba(0, 0, 0, 0.28),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .home-section-instagram .instagram-profile-embed {
     height: 520px;
     border-radius: 6px;
   }
 }
 
-/* Header — mobilni meni (≤650px): panel, veći tap, jezik ne prekriva hamburger */
+/* Header — mobilni meni (≤650px): navigacija + hamburger u gornjem desnom uglu #top (ne ispod loga) */
+#language {
+  display: none !important;
+}
+
 @media (max-width: 650px) {
-  #top .navigation {
+  #top {
+    position: relative !important;
+    z-index: 25;
+    padding-right: 58px;
+    padding-top: max(4px, env(safe-area-inset-top, 0px));
+    box-sizing: border-box;
+  }
+  #top .logo {
+    float: none !important;
+    max-width: calc(100% - 58px);
     position: relative;
-    z-index: 20;
+    z-index: 1;
+  }
+  #top .navigation {
+    position: absolute !important;
+    top: max(6px, env(safe-area-inset-top, 0px));
+    right: max(6px, env(safe-area-inset-right, 0px));
+    left: auto !important;
+    bottom: auto;
+    width: auto;
+    float: none !important;
+    z-index: 40;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-align: right;
   }
   #top .main-menu-btn {
-    top: max(12px, env(safe-area-inset-top, 0px));
-    right: max(4px, env(safe-area-inset-right, 0px));
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    z-index: 41;
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+    box-shadow:
+      0 8px 22px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: top;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+  #top .main-menu-btn:hover {
+    border-color: rgba(255, 255, 255, 0.48);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.14) 100%);
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.56);
   }
   #top .main-menu-btn:active {
-    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(1px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 6px 16px rgba(0, 0, 0, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.38);
   }
   #main-menu-state:checked ~ .main-menu-btn {
-    background: rgba(255, 255, 255, 0.24);
+    border-color: rgba(255, 255, 255, 0.52);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.16) 100%);
+    box-shadow:
+      0 10px 26px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  #top .main-menu-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.95);
+    outline-offset: 2px;
   }
   #top .main-menu-btn .main-menu-btn-icon {
     left: 50%;
@@ -541,43 +676,21 @@ section.home-section-2 .text-desktop-right p {
   #top .main-menu-btn .main-menu-btn-icon:after {
     left: 0;
   }
-  #top #language {
-    display: block;
-    top: max(14px, env(safe-area-inset-top, 0px));
-    right: calc(48px + max(10px, env(safe-area-inset-right, 0px)));
-    bottom: auto;
-    z-index: 21;
-  }
-  #top #language .ccm-block-switch-language-flags {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 2px;
-    padding: 6px 10px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.35);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  #top #language .ccm-block-switch-language-flags a,
-  #top #language .ccm-block-switch-language-flags span {
-    padding: 4px 8px !important;
-    font-size: 14px !important;
-    border-radius: 6px;
-  }
-  #top #language .ccm-block-switch-language-flags a:hover,
-  #top #language .ccm-block-switch-language-flags a:focus {
-    background: rgba(255, 255, 255, 0.1);
-  }
   #main-menu-state:checked ~ #main-menu {
-    display: block;
-    width: 100%;
+    display: block !important;
+    position: fixed !important;
+    left: max(12px, env(safe-area-inset-left, 0px)) !important;
+    right: max(12px, env(safe-area-inset-right, 0px)) !important;
+    top: calc(max(6px, env(safe-area-inset-top, 0px)) + 58px);
+    width: auto !important;
+    max-height: min(70vh, 520px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
-    margin: 12px 0 0 0;
+    margin: 0;
     padding: 6px 0;
     list-style: none;
+    z-index: 2147483647;
     background: rgba(22, 11, 8, 0.94);
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
@@ -586,6 +699,21 @@ section.home-section-2 .text-desktop-right p {
     box-shadow:
       0 18px 48px rgba(0, 0, 0, 0.45),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  /* Otvoren meni: ceo .container (nav + fiksni panel) iznad #teaser-speise / mape */
+  #teaser:has(#main-menu-state:checked) > .container {
+    z-index: 2147483646 !important;
+  }
+  #teaser > .teaser-shade {
+    position: absolute !important;
+  }
+  /* #google-map je sibling #teaser ispod #wrapper; Leaflet pane ~400+ inače mogu biti iznad #teaser (15). */
+  #wrapper:has(#main-menu-state:checked) #teaser {
+    z-index: 2147483645 !important;
+  }
+  #wrapper:has(#main-menu-state:checked) #google-map {
+    z-index: 0 !important;
+    isolation: isolate;
   }
   #top .navigation ul#main-menu li {
     display: block;
@@ -636,17 +764,661 @@ section.home-section-2 .text-desktop-right p {
     outline: 2px solid rgba(255, 255, 255, 0.85);
     outline-offset: -4px;
   }
-  #main-menu-state:checked ~ #main-menu ~ #language {
-    display: block;
-    position: static;
-    width: 100%;
-    margin-top: 10px;
+}
+
+/* ========== Uski ekran (≤768px): globalno; početna = ista kao na 768px (bez daljih koraka) ========== */
+@media (max-width: 768px) {
+  #wrapper {
+    overflow-x: clip;
+  }
+  #content .container {
+    padding-left: max(15px, env(safe-area-inset-left, 0px));
+    padding-right: max(15px, env(safe-area-inset-right, 0px));
+  }
+  #content img.img-responsive,
+  #content .img-responsive {
+    max-width: 100%;
+    height: auto;
+  }
+  #wrapper h1,
+  #wrapper h2,
+  #wrapper h3,
+  #content p,
+  #teaser-content h1 {
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+  }
+  #content.about .for-content-about,
+  #content.about .for-content-about.diff {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    overflow-x: hidden;
+  }
+  .menu-section-1 {
+    padding-top: 40px;
+  }
+  .menu-section-1 .btn-center .for-btn .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 12px 18px;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  .speisekarten {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 8px 44px 8px !important;
+  }
+  .speisekarten .speisekarte {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .speisekarten .speisekarte a {
+    max-width: 100%;
+  }
+  .speisekarten .html-entity {
+    width: 44px;
+    height: 44px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    -webkit-transform: translateY(-50%) !important;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    font-size: 22px !important;
+    line-height: 1 !important;
+  }
+  .speisekarten .html-entity.icon-arrow-right {
+    right: 4px !important;
+    left: auto !important;
+  }
+  .speisekarten .html-entity.icon-arrow-left {
+    left: 4px !important;
+    right: auto !important;
+  }
+  .speisekarten .slick-dots {
+    left: 8px !important;
+    right: 8px !important;
+  }
+  #google-map {
+    min-height: 260px;
+  }
+  #google-map .google-map-frame {
+    min-height: 260px;
+  }
+  #google-map a.google-map-external {
+    right: max(10px, env(safe-area-inset-right, 0px));
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+  section.home-section-2 .text-desktop-right {
     margin-left: 0;
     margin-right: 0;
-    right: auto;
-    top: auto;
+    max-width: none;
+    padding: 1.25rem 1.1rem;
   }
-  #main-menu-state:checked ~ #main-menu ~ #language .ccm-block-switch-language-flags {
-    justify-content: center;
+  .home-section-instagram {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .home-section-instagram .container {
+    padding-left: max(15px, env(safe-area-inset-left, 0px));
+    padding-right: max(15px, env(safe-area-inset-right, 0px));
+  }
+  .home-section-instagram .instagram-profile-embed {
+    height: min(520px, 72vh);
+    min-height: 380px;
+  }
+  .special-text-area {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Početna: ista kompozicija na svim širinama ≤768 kao na tačno 768px (768–991 pravila) */
+  #teaser.home {
+    height: 600px !important;
+    min-height: 600px !important;
+    max-height: none !important;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 0 !important;
+  }
+  #teaser.home > .teaser-shade {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100% !important;
+    z-index: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
+  }
+  #teaser.home > .container {
+    position: relative;
+    z-index: 2;
+    min-height: 100% !important;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+  /*
+   * Ispod logoa (displaytill650 ~200px visine + #top padding). Bez top:50% + translateY
+   * u niskom .container — inače DevTools često pokazuje top:0 / sadržaj „na vrhu“.
+   */
+  #teaser.home #teaser-content {
+    position: absolute !important;
+    top: calc(env(safe-area-inset-top, 0px) + 15px + min(200px, 52vw) + 14px) !important;
+    left: 0;
+    right: auto;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+    max-width: 333px !important;
+    width: 100%;
+    min-height: 220px;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0 !important;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  #teaser.home #teaser-content .teaser-reviews {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.35rem 1.5rem 1.5rem;
+    border-radius: 16px;
+  }
+  #teaser.home #teaser-content .teaser-reviews-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.85rem;
+  }
+  #teaser.home #teaser-content .teaser-reviews-score {
+    font-size: 2.35rem;
+  }
+  #teaser.home #teaser-content .teaser-reviews-cta {
+    width: 100%;
+    max-width: 300px;
+  }
+  #teaser.home #teaser-content .teaser-reviews-cta .btn {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  #teaser.home #teaser-speise {
+    position: absolute !important;
+    z-index: 3;
+    left: 50% !important;
+    right: auto !important;
+    top: 250px !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    margin-left: 61px !important;
+    margin-right: 0 !important;
+    width: min(250px, calc(50vw - 61px - 1.5rem)) !important;
+    max-width: 250px !important;
+    padding: 0;
+    overflow: visible;
+    transform: none !important;
+    -webkit-transform: none !important;
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+  #teaser.home #teaser-speise img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    display: block;
+    margin: 0;
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.45));
+  }
+  #teaser.home #teaser-speise:after {
+    content: '';
+    position: absolute;
+    display: block !important;
+    left: 50% !important;
+    width: 350px !important;
+    height: 41px !important;
+    margin-left: -175px !important;
+    top: 110px !important;
+    transform-origin: 52% 48%;
+    -webkit-transform: rotate(-45deg) !important;
+    -ms-transform: rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
+  }
+  #teaser.home #follow-us {
+    position: absolute !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    margin-top: 0 !important;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  #teaser.menu,
+  #teaser.about {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding-bottom: 0 !important;
+  }
+  #teaser.menu > .teaser-shade,
+  #teaser.about > .teaser-shade {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    min-height: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.38) 45%,
+      rgba(0, 0, 0, 0.22) 100%
+    );
+  }
+  #teaser.menu > .container,
+  #teaser.about > .container {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  #teaser.menu #teaser-content,
+  #teaser.about #teaser-content {
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    max-width: none !important;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 88px 0 20px !important;
+    min-height: 0;
+  }
+  #teaser.menu #teaser-speise-menu {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: min(280px, 88vw) !important;
+    max-width: 100%;
+    padding: 4px 12px 12px;
+    box-sizing: border-box;
+  }
+  #teaser.menu #teaser-speise-menu img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  #teaser.menu #teaser-minze {
+    display: none !important;
+  }
+  .chili-for-teaser {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 200px;
+    margin: 0 auto !important;
+    padding: 8px 0 0;
+  }
+  .chili-for-teaser img {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: block;
+  }
+  .staebchen-for-teaser {
+    display: none !important;
+  }
+  /* Samo meni / o nama — ne dirati #teaser.home #follow-us (vertikalni „Pratite nas“) */
+  #teaser.menu #follow-us,
+  #teaser.about #follow-us {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    padding: 12px 0 20px;
+  }
+  #teaser.menu #follow-us .container,
+  #teaser.about #follow-us .container {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  #teaser.menu #follow-us .inner-follow,
+  #teaser.about #follow-us .inner-follow {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #teaser.menu #follow-us .inner-follow .follow-text,
+  #teaser.about #follow-us .inner-follow .follow-text {
+    transform: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+  }
+  #teaser.menu #follow-us .innerstabechen,
+  #teaser.about #follow-us .innerstabechen {
+    display: none;
+  }
+
+  /* /onama: zadrzi desktop kompoziciju na tabletu/mobilu */
+  #teaser.about {
+    height: 600px !important;
+    min-height: 600px !important;
+    overflow: hidden !important;
+  }
+  #teaser.about > .container {
+    position: relative !important;
+    min-height: 100% !important;
+    z-index: 20 !important;
+  }
+  #teaser.about #teaser-content {
+    position: absolute !important;
+    top: 220px !important;
+    left: 16px !important;
+    right: auto !important;
+    max-width: 333px !important;
+    width: 100% !important;
+    z-index: 12 !important;
+    box-sizing: border-box;
+    padding: 0 !important;
+    min-height: 0 !important;
+    text-align: left;
+  }
+  #teaser.about .staebchen-for-teaser {
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -145px !important;
+    width: 50px !important;
+    margin-left: 44px !important;
+    z-index: 8 !important;
+    pointer-events: none;
+  }
+  #teaser.about .staebchen-for-teaser img {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    display: block;
+  }
+  #teaser.about .chili-for-teaser {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: -72px !important;
+    width: 150px !important;
+    max-width: none !important;
+    margin: 0 !important;
+    margin-left: -210px !important;
+    padding: 0 !important;
+    z-index: 6 !important;
+    pointer-events: none;
+  }
+  #teaser.about .chili-for-teaser img {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block;
+  }
+}
+
+/* /onama <=650px: jos nize, kao na originalnom mobilnom rasporedu */
+@media (max-width: 650px) {
+  #teaser.about .staebchen-for-teaser {
+    bottom: -165px !important;
+  }
+  #teaser.about .chili-for-teaser {
+    bottom: -82px !important;
+  }
+}
+
+/* HOME ≤650px: cinija + stapici su fiksni desno i samo seku viewport */
+@media (max-width: 650px) {
+  #teaser.home {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  #teaser.home > .container {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  #teaser.home #teaser-speise {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: 250px !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    margin-left: 61px !important;
+    margin-right: 0 !important;
+    width: 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    padding: 0 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+  }
+  #teaser.home #teaser-speise img {
+    width: 250px !important;
+    height: 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  #teaser.home #teaser-speise:after {
+    left: 50% !important;
+    top: 110px !important;
+    width: 350px !important;
+    height: 41px !important;
+    margin-left: -175px !important;
+    transform-origin: 52% 48%;
+    -webkit-transform: rotate(-45deg) !important;
+    -ms-transform: rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
+  }
+}
+
+/* Meni ≤768px: minza ostaje fiksna, viewport je prirodno seče */
+@media (max-width: 768px) {
+  #teaser.menu #follow-us,
+  #teaser.menu #follow-us .container,
+  #teaser.menu #follow-us .inner-follow {
+    display: none !important;
+  }
+  #teaser.menu {
+    position: relative !important;
+    height: 600px !important;
+    min-height: 600px !important;
+    overflow: visible !important;
+    padding-bottom: 0 !important;
+    z-index: 20;
+  }
+  #teaser.menu #teaser-content {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 32px !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center;
+    transform: none !important;
+    -webkit-transform: none !important;
+    z-index: 4 !important;
+  }
+  #teaser.menu #teaser-content h1 {
+    margin: 0;
+    line-height: 1;
+    font-size: clamp(42px, 11vw, 60px);
+    text-align: center;
+  }
+  #teaser.menu #teaser-content hr,
+  #teaser.menu #teaser-content p {
+    display: none !important;
+  }
+  #teaser.menu #teaser-speise-menu {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: 237px !important;
+    max-width: none !important;
+    margin-left: -163px !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    pointer-events: none;
+    z-index: 60 !important;
+  }
+  #teaser.menu #teaser-speise-menu img {
+    display: block;
+    width: 237px !important;
+    max-width: 237px !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+  #teaser.menu > .container {
+    position: relative !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+    z-index: 21;
+  }
+  #teaser.menu #teaser-minze {
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: 300px !important;
+    max-width: none !important;
+    margin-left: 145px !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    pointer-events: none;
+    z-index: 59 !important;
+  }
+  #teaser.menu #teaser-minze img {
+    display: block;
+    width: 300px !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0;
+  }
+}
+
+/* /meni - uredjen tekstualni meni */
+#content.menu.about .menu-section-1.zindexbug {
+  display: none !important;
+}
+.menu-clean-section {
+  position: relative;
+  z-index: 3;
+  padding: 64px 0 84px;
+}
+.menu-clean-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.menu-clean-header h2 {
+  margin: 0 0 8px;
+}
+.menu-clean-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+.menu-clean-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.menu-clean-card {
+  position: relative;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+.menu-clean-card-rolls {
+  z-index: 6;
+}
+.menu-clean-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.menu-clean-card p {
+  margin: 0 0 8px;
+  line-height: 1.55;
+}
+.menu-clean-note {
+  margin-bottom: 10px;
+}
+.menu-clean-pricing {
+  margin: 0 0 10px;
+  padding-left: 18px;
+}
+.menu-clean-pricing li {
+  margin-bottom: 6px;
+}
+.menu-clean-ing,
+.menu-clean-price {
+  margin-top: 8px;
+}
+.menu-clean-card-sweet {
+  border-color: rgba(255, 215, 118, 0.35);
+}
+@media (max-width: 991px) {
+  .menu-clean-section {
+    padding: 46px 0 64px;
+  }
+  .menu-clean-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }

@@ -42,6 +42,3 @@ $(function(){
 
 });
 
-
-//https://neu.saigon.at/submit/74#form74
-//https://neu.saigon.at/form_success/74#form74
