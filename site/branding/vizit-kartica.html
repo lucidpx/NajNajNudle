@@ -16,6 +16,8 @@
       --ink-soft: #4b2c20;
       --cream: #fbf7f2;
       --cream-dark: #f0e8df;
+      /* Bela iz logo.svg (prvi path fill="#FDFDFD") — prednja strana kartice */
+      --logo-surface: #fdfdfd;
     }
 
     * {
@@ -67,10 +69,10 @@
       box-shadow: 0 8px 28px rgba(44, 24, 16, 0.12);
     }
 
-    /* — Prednja strana — */
+    /* — Prednja strana — ista bela kao pozadina u logo.svg (#FDFDFD) */
     .face-front {
-      background: var(--cream);
-      border: 1px solid var(--cream-dark);
+      background: var(--logo-surface);
+      border: 1px solid rgba(44, 24, 16, 0.08);
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 0 3mm;
